@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  namespace :admins do
+    resources :locations
+  end
+
   root 'pages#home'
   get 'users', to: 'pages#users', as: 'users_page'
   get 'admins', to: 'pages#admins', as: 'admins_page'
