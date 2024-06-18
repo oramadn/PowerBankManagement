@@ -2,7 +2,6 @@
 
 <% if user_signed_in? %>
 <ul>
-    <li><%= link_to "Users Page", users_page_path %></li>
     <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
 </ul>
 <% elsif !admin_signed_in? %>
@@ -13,7 +12,6 @@
 
 <% if admin_signed_in? %>
 <ul>
-    <li><%= link_to "Admins Page", admins_page_path %></li>
     <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: { turbo_method: :delete } %></li>
 </ul>
 <% elsif !user_signed_in? %>
