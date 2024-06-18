@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    resources :locations
+  end
+
+  namespace :users do
+    resources :locations
+  end
+
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     registrations: 'admins/registrations'
@@ -9,9 +17,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  namespace :admins do
-    resources :locations
-  end
+  
 
   root 'pages#home'
   get 'users', to: 'pages#users', as: 'users_page'

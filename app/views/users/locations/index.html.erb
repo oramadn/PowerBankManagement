@@ -1,0 +1,23 @@
+<h1>Locations</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.name %></td>
+        <td><%= location.lat %></td>
+        <td><%= location.lng %></td>
+        <td><%= link_to "Show", users_location_path(location), class: "btn btn-info" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Back to User Dashboard", users_page_path, class: "btn btn-secondary" %>
