@@ -1,2 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Homepage</h1>
+
+<% if user_signed_in? %>
+<ul>
+    <li><%= link_to "Users Page", users_page_path %></li>
+    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
+</ul>
+<% elsif !admin_signed_in? %>
+<h3>User</h3>
+    <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Sign in", new_user_session_path %>
+<% end %>
+
+<% if admin_signed_in? %>
+<ul>
+    <li><%= link_to "Admins Page", admins_page_path %></li>
+    <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: { turbo_method: :delete } %></li>
+</ul>
+<% elsif !user_signed_in? %>
+<h3>Admin</h3>
+    <%= link_to "Sign up", new_admin_registration_path %>
+    <%= link_to "Sign in", new_admin_session_path %>
+<% end %>
