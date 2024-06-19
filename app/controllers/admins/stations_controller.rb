@@ -59,13 +59,15 @@ class Admins::StationsController < ApplicationController
   end
 
   def station_params
-    params.require(:station).permit(:name, :location_id, :warehouse_id, :status)
-  end
+    params.require(:station).permit(:location_id, :warehouse_id, :status, power_bank_ids: [])
+  end  
 
   def update_power_banks
-    if params[:powerbank_ids]
-      PowerBank.where(station_id: @station.id).update_all(station_id: nil) # Unassign all power_banks
-      PowerBank.where(id: params[:powerbank_ids]).update_all(station_id: @station.id) # Assign selected power_banks
+    if params[:station][:power_bank_ids].present?
+      PowerBank.where(station_id: @station.id).update_all(station_id: nil) # Unassign all power_banks from this station
+      PowerBank.where(id: params[:station][:power_bank_ids]).update_all(station_id: @station.id) # Assign selected power_banks to this station
+    else
+      PowerBank.where(station_id: @station.id).update_all(station_id: nil) # Unassign all power_banks from this station
     end
   end
 end

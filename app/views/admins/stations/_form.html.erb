@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
     <%= form.label :location_id %>
     <%= form.collection_select :location_id, @locations, :id, :name %>
   </div>
@@ -32,9 +27,14 @@
   </div>
 
   <div class="field">
-    <%= form.label :power_banks %>
-    <%= select_tag 'powerbank_ids[]', options_from_collection_for_select(@power_banks, 'id', 'name', @station.power_banks.pluck(:id)), multiple: true, class: 'form-control' %>
-  </div>
+    <%= form.label :power_banks, 'Select Power Banks' %><br>
+    <% @power_banks.each do |power_bank| %>
+      <label>
+        <%= check_box_tag 'station[power_bank_ids][]', power_bank.id, @station.power_banks.include?(power_bank) %>
+        <%= "Power Bank #{power_bank.id}" %>
+      </label><br>
+    <% end %>
+  </div>    
 
   <div class="actions">
     <%= form.submit %>
