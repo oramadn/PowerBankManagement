@@ -5,4 +5,6 @@ class Station < ApplicationRecord
   belongs_to :warehouse, optional: true
 
   validates :status, presence: true
+  validates :location_id, presence: true
+  validates :warehouse_id, presence: true
 end

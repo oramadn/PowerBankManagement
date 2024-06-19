@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   namespace :admins do
+    resources :stations
     resources :locations
     resources :warehouses
   end
 
   namespace :users do
-    resources :locations
-    resources :warehouses
+    resources :locations, only: [:index, :show]
+    resources :warehouses, only: [:index, :show]
   end
 
   devise_for :admins, controllers: {

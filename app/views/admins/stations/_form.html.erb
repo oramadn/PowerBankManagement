@@ -1,0 +1,42 @@
+<%= form_with(model: [:admins, @station], local: true) do |form| %>
+  <% if @station.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@station.errors.count, "error") %> prohibited this station from being saved:</h2>
+
+      <ul>
+        <% @station.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location_id %>
+    <%= form.collection_select :location_id, @locations, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :warehouse_id %>
+    <%= form.collection_select :warehouse_id, @warehouses, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select([['Online', 'online'], ['Offline', 'offline']], @station.status), {}, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :power_banks %>
+    <%= select_tag 'powerbank_ids[]', options_from_collection_for_select(@power_banks, 'id', 'name', @station.power_banks.pluck(:id)), multiple: true, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
