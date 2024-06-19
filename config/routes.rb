@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :admins do
+    resources :power_banks
     resources :stations
     resources :locations
     resources :warehouses

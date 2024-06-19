@@ -1,0 +1,30 @@
+<h1>Power Banks</h1>
+<%= link_to 'New Power Bank', new_admins_power_bank_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Charge</th>
+      <th>Status</th>
+      <th>User</th>
+      <th>Station</th>
+      <th>Warehouse</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @power_banks.each do |power_bank| %>
+      <tr>
+        <td><%= power_bank.charge %></td>
+        <td><%= power_bank.status %></td>
+        <td><%= power_bank.user&.email %></td>
+        <td><%= power_bank.station&.id %></td>
+        <td><%= power_bank.warehouse&.name %></td>
+        <td><%= link_to 'Show', admins_power_bank_path(power_bank) %></td>
+        <td><%= link_to 'Edit', edit_admins_power_bank_path(power_bank) %></td>
+        <td><%= link_to 'Destroy', admins_power_bank_path(power_bank), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Back to Admin Dashboard", admins_page_path, class: "btn btn-secondary" %>

@@ -1,0 +1,43 @@
+<%= form_with(model: power_bank, url: power_bank.persisted? ? admins_power_bank_path(power_bank) : admins_power_banks_path, method: power_bank.persisted? ? :patch : :post) do |form| %>
+  <% if @power_bank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@power_bank.errors.count, "error") %> prohibited this power bank from being saved:</h2>
+
+      <ul>
+        <% @power_bank.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :charge %>
+    <%= form.text_field :charge %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select([['Reserved', 'reserved'], ['Available', 'available']], @power_bank.status), {}, class: 'form-control' %>
+  </div>
+  
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, @users, :id, :email, { include_blank: true } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :station_id %>
+    <%= form.collection_select :station_id, @stations, :id, :id, { include_blank: true } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :warehouse_id %>
+    <%= form.collection_select :warehouse_id, @warehouses, :id, :name, { include_blank: true } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

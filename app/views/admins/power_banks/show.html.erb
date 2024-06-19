@@ -1,0 +1,27 @@
+<p>
+  <strong>Charge:</strong>
+  <%= @power_bank.charge %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @power_bank.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @power_bank.user&.email %>
+</p>
+
+<p>
+  <strong>Station:</strong>
+  <%= @power_bank.station&.id %>
+</p>
+
+<p>
+  <strong>Warehouse:</strong>
+  <%= @power_bank.warehouse&.name %>
+</p>
+
+<%= link_to 'Edit', edit_admins_power_bank_path(@power_bank) %> |
+<%= link_to 'Back', admins_power_banks_path %>
