@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :locations, only: [:index, :show]
-    resources :warehouses, only: [:index, :show]
   end
 
   devise_for :admins, controllers: {
