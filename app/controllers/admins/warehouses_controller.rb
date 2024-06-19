@@ -6,6 +6,9 @@ class Admins::WarehousesController < ApplicationController
     @warehouses = Warehouse.all
   end
   
+  def show
+  end
+
   def new
     @warehouse = Warehouse.new
   end
@@ -17,9 +20,6 @@ class Admins::WarehousesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
   end
 
   def edit

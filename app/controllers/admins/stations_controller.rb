@@ -16,12 +16,6 @@ class Admins::StationsController < ApplicationController
     @power_banks = PowerBank.where(station_id: nil) # Only show unassigned power_banks
   end
 
-  def edit
-    @locations = Location.all
-    @warehouses = Warehouse.all
-    @power_banks = PowerBank.where(station_id: [nil, @station.id]) # Show unassigned and already assigned power_banks
-  end
-
   def create
     @station = Station.new(station_params)
     if @station.save
@@ -33,6 +27,12 @@ class Admins::StationsController < ApplicationController
       @power_banks = PowerBank.where(station_id: nil)
       render :new
     end
+  end
+
+  def edit
+    @locations = Location.all
+    @warehouses = Warehouse.all
+    @power_banks = PowerBank.where(station_id: [nil, @station.id]) # Show unassigned and already assigned power_banks
   end
 
   def update
