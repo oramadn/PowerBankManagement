@@ -21,7 +21,7 @@ class Admins::PowerBanksController < ApplicationController
   def create
     @power_bank = PowerBank.new(power_bank_params)
     if @power_bank.save
-      redirect_to admins_power_bank_path(@power_bank), notice: 'Power Bank was successfully created.'
+      redirect_to admins_power_banks_path(@power_bank), notice: 'Power Bank was successfully created.'
     else
       load_associations
       render :new
@@ -30,7 +30,7 @@ class Admins::PowerBanksController < ApplicationController
 
   def update
     if @power_bank.update(power_bank_params)
-      redirect_to admins_power_bank_path(@power_bank), notice: 'Power Bank was successfully updated.'
+      redirect_to admins_power_banks_path(@power_bank), notice: 'Power Bank was successfully updated.'
     else
       load_associations
       render :edit
