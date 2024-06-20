@@ -1,8 +1,14 @@
-#!/bin/bash -e
+#!/bin/bash
+set -e
 
-# If running the rails server then create or migrate existing database
-if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
-fi
+# Remove a potentially pre-existing server.pid for Rails.
+rm -f /rails/tmp/pids/server.pid
 
-exec "${@}"
+# Check if the database exists, create if it doesn't
+bundle exec rails db:prepare
+
+# Load fixtures into the database
+bundle exec rails db:fixtures:load
+
+# Then exec the container's main process (what's set as CMD in the Dockerfile).
+exec "$@"

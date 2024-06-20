@@ -15,15 +15,16 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  password: password
-  host: 127.0.0.1
+  host: <%= puts "DATABASE_HOST=#{ENV['DATABASE_HOST']}"; ENV['DATABASE_HOST'] || '127.0.0.1' %>
+  username: <%= puts "DATABASE_USER=#{ENV['DATABASE_USER']}"; ENV['DATABASE_USER'] || 'postgres' %>
+  password: <%= puts "DATABASE_PASSWORD=#{ENV['DATABASE_PASSWORD']}"; ENV['DATABASE_PASSWORD'] || 'password' %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
 
 development:
   <<: *default
   database: power_bank_management_api_development
-
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
