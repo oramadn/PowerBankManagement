@@ -9,7 +9,15 @@
 <% if available_power_banks.any? %>
   <ul>
     <% available_power_banks.each do |power_bank| %>
-      <li>Power Bank <%= power_bank.id %></li>
+      <% if power_bank.status == 'available' %>
+        <li>
+          Power Bank <%= power_bank.id %>
+          <%= form_with(model: power_bank, url: reserve_users_power_bank_path(power_bank), method: :patch) do |f| %>
+            <%= f.hidden_field :status, value: 'reserved' %>
+            <%= f.submit "Reserve", class: "btn btn-primary" %>
+          <% end %>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 <% else %>

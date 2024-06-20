@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   namespace :users do
     resources :locations, only: [:index, :show]
     resources :stations, only: [:index, :show]
+    resources :power_banks, only: [] do
+      patch 'reserve', on: :member
+    end
   end
 
   devise_for :admins, controllers: {

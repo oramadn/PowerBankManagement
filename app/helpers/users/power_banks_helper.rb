@@ -1,0 +1,2 @@
+module Users::PowerBanksHelper
+end
