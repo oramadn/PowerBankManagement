@@ -1,4 +1,4 @@
-# README
+![image](https://github.com/oramadn/PowerBankManagementAPI/assets/111233764/e56db463-2aa9-41d3-a93a-c5e4367adea7)# README
 
 ## Power Bank Management API
 A Rails-based API for managing power banks, allowing administrators to oversee locations, users, and stations, warehouses and power banks. And allow users to reserve power banks on the go!
@@ -40,6 +40,9 @@ docker-compose build
 ```
 docker-compose up
 ```
+
+### Schema ER
+![image](https://github.com/oramadn/PowerBankManagementAPI/assets/111233764/78659c76-7a19-42fd-a1e4-dac9d67ef49a)
 
 ### Usage
 When building and running the docker image, `bin/docker-entrypoint` prepares the databases as well as provide sample data which was defined under `test/fixtures`. Feel free to add new entries there or manually through interacting with the application
