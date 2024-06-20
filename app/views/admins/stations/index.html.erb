@@ -15,16 +15,8 @@
     <% @stations.each do |station| %>
       <tr>
         <td><%= station.status %></td>
-        <% if station.location %>
-          <td><%= station.location.name %></td>
-        <% else %>
-          <td>Location not found</td>
-        <% end %>
-        <% if station.warehouse %>
-          <td><%= station.warehouse.name %></td>
-        <% else %>
-          <td>Warehouse not found</td>
-        <% end %>
+        <td><%= station.location&.name %></td>
+        <td><%= station.warehouse&.name %></td>
         <td style="text-align: center;"> <!-- Center align content in this cell -->
           <% if station.power_banks.any? %>
             <ul style="list-style-type: none; padding: 0; margin: 0; text-align: center;"> <!-- Remove bullet points and center text within the cell -->
