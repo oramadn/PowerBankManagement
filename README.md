@@ -1,9 +1,6 @@
 # README
 
-## Project Name
-Power Bank Management API
-
-## Description
+## Power Bank Management API
 A Rails-based API for managing power banks, allowing administrators to oversee locations, users, and stations, warehouses and power banks. And allow users to reserve power banks on the go!
 
 ## Installation
