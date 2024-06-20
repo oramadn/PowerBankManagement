@@ -20,14 +20,14 @@ class Admins::StationsController < ApplicationController
     @station = Station.new(station_params)
     if @station.save
       update_power_banks
-      redirect_to admins_station_path(@station), notice: 'Station was successfully created.'
+      redirect_to admins_stations_path, notice: 'Station was successfully created.'
     else
       @locations = Location.all
       @warehouses = Warehouse.all
       @power_banks = PowerBank.where(station_id: nil)
       render :new
     end
-  end
+  end  
 
   def edit
     @locations = Location.all
