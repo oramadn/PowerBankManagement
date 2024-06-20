@@ -1,5 +1,6 @@
 <h1>Pages#users</h1>
 <h3>User Dashboard</h3>
-<%= link_to "View Locations", users_locations_path %>
+<li><%= link_to "View Locations", users_locations_path %></li>
+<li><%= link_to "View Stations", users_stations_path %></li>
 <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
 <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>

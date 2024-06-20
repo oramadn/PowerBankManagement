@@ -1,0 +1,6 @@
+<h1><%= @station.id %></h1>
+
+<p><strong>Location:</strong> <%= @station.location&.name %></p>
+<p><strong>Status:</strong> <%= @station.status %></p>
+
+<%= link_to 'Back', users_stations_path, class: 'btn btn-secondary' %>
