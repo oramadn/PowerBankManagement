@@ -1,15 +1,14 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# test/fixtures/power_banks.yml
 
-one:
-  charge: 9.99
-  status: MyString
-  user: one
-  station: one
-  warehouse: one
+power_bank1:
+  id: 1
+  charge: 43.0
+  status: "available"
+  user_id: 1
+  station_id: 1
+  warehouse_id: 1
 
-two:
-  charge: 9.99
-  status: MyString
-  user: two
-  station: two
-  warehouse: two
+power_bank2:
+  id: 2
+  charge: 45.0
+  status: "reserved"

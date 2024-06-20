@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  address: MyString
+warehouse1:
+  id: 1
+  name: "Warehouse_1"
+  address: "Amman"
 
-two:
-  name: MyString
-  address: MyString
+warehouse2:
+  id: 2
+  name: "Warehouse_2"
+  address: "Amman"

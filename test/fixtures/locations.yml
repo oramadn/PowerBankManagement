@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+location1:
+  id: 1
+  name: "Amman"
   lat: 9.99
   lng: 9.99
 
-two:
-  name: MyString
-  lat: 9.99
-  lng: 9.99
+location2:
+  id: 2
+  name: "Aqaba"
+  lat: 12
+  lng: 13
