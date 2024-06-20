@@ -1,7 +1,16 @@
 <h1><%= @station.id %></h1>
 
-<p><strong>Location:</strong> <%= @station.location.name %></p>
-<p><strong>Warehouse:</strong> <%= @station.warehouse.name %></p>
+<% if @station.location %>
+  <p><strong>Location:</strong> <%= @station.location.name %></p>
+<% else %>
+  <p><strong>Location:</strong> Location not found</p>
+<% end %>
+
+<% if @station.warehouse %>
+  <p><strong>Warehouse:</strong> <%= @station.warehouse.name %></p>
+<% else %>
+  <p><strong>Warehouse:</strong> Warehouse not found</p>
+<% end %>
 
 <% if @station.power_banks.any? %>
   <h2>Assigned Power Banks:</h2>
