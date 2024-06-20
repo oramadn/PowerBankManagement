@@ -1,6 +1,19 @@
-<h1><%= @station.id %></h1>
+<h1>Station Details</h1>
 
-<p><strong>Location:</strong> <%= @station.location&.name %></p>
+<p><strong>ID:</strong> <%= @station.id %></p>
 <p><strong>Status:</strong> <%= @station.status %></p>
+<p><strong>Location:</strong> <%= @station.location&.name %></p>
+
+<h2>Available Power Banks</h2>
+<% available_power_banks = @station.power_banks.select { |pb| pb.status == 'available' } %>
+<% if available_power_banks.any? %>
+  <ul>
+    <% available_power_banks.each do |power_bank| %>
+      <li>Power Bank <%= power_bank.id %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No power banks are currently available</p>
+<% end %>
 
 <%= link_to 'Back', users_stations_path, class: 'btn btn-secondary' %>
