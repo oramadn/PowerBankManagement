@@ -13,6 +13,8 @@ class PowerBank < ApplicationRecord
   def update_status_based_on_user
     if user_id.present?
       self.status = 'reserved'
+    else
+      self.status = 'available'
     end
   end
 end
