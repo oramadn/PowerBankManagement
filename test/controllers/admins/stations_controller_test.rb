@@ -1,48 +1,59 @@
 require "test_helper"
 
 class Admins::StationsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @admins_station = admins_stations(:one)
+    @admin = admins(:admin1)
+    sign_in @admin
+    @station = stations(:station1)
+    @warehouse = warehouses(:warehouse1)
+    @location = locations(:location1)
   end
 
   test "should get index" do
-    get admins_stations_url
+    get admins_stations_path
+    assert_response :success
+  end
+
+  test "should show station" do
+    get admins_station_path(@station)
     assert_response :success
   end
 
   test "should get new" do
-    get new_admins_station_url
+    get new_admins_station_path
     assert_response :success
   end
 
-  test "should create admins_station" do
-    assert_difference("Admins::Station.count") do
-      post admins_stations_url, params: { admins_station: { location_id: @admins_station.location_id, status: @admins_station.status, warehouse_id: @admins_station.warehouse_id } }
+  test "should create station" do
+    assert_difference("Station.count") do
+      post admins_stations_path, params: { station: { status: 'online', warehouse_id: @warehouse.id } }
     end
+  
+    assert_redirected_to admins_stations_path
+  end  
 
-    assert_redirected_to admins_station_url(Admins::Station.last)
-  end
-
-  test "should show admins_station" do
-    get admins_station_url(@admins_station)
-    assert_response :success
-  end
 
   test "should get edit" do
-    get edit_admins_station_url(@admins_station)
+    get edit_admins_station_path(@station)
     assert_response :success
   end
 
-  test "should update admins_station" do
-    patch admins_station_url(@admins_station), params: { admins_station: { location_id: @admins_station.location_id, status: @admins_station.status, warehouse_id: @admins_station.warehouse_id } }
-    assert_redirected_to admins_station_url(@admins_station)
+  test "should update station" do
+    patch admins_station_path(@station), params: { station: { location_id: @location.id, status: 'offline', warehouse_id: nil } }
+    assert_redirected_to admins_station_path
+    @station.reload
+    assert_equal 'offline', @station.status
+    assert_equal 1, @station.location_id
+    assert_nil nil, @station.warehouse_id
   end
 
-  test "should destroy admins_station" do
-    assert_difference("Admins::Station.count", -1) do
-      delete admins_station_url(@admins_station)
+  test "should destroy station" do
+    assert_difference("Station.count", -1) do
+      delete admins_station_path(@station)
     end
 
-    assert_redirected_to admins_stations_url
+    assert_redirected_to admins_stations_path
   end
 end
