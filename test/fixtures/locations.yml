@@ -1,5 +1,3 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 location1:
   id: 1
   name: "Amman"
@@ -11,3 +9,15 @@ location2:
   name: "Aqaba"
   lat: 12
   lng: 13
+
+location3:
+  id: 3
+  name: "Zarqa"
+  lat: 10.12
+  lng: 13
+
+location4:
+  id: 4
+  name: "Madaba"
+  lat: 12
+  lng: 15.12

@@ -1,10 +1,16 @@
 station1:
   id: 1
   status: "online"
-  location_id: 1
-  warehouse_id: 1
 
 station2:
   id: 2
+  status: "offline"
+
+station3:
+  id: 3
+  status: "online"
+
+station4:
+  id: 4
   status: "offline"
 

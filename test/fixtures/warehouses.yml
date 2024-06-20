@@ -1,5 +1,3 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 warehouse1:
   id: 1
   name: "Warehouse_1"
@@ -8,4 +6,14 @@ warehouse1:
 warehouse2:
   id: 2
   name: "Warehouse_2"
-  address: "Amman"
+  address: "Aqaba"
+
+warehouse3:
+  id: 3
+  name: "Warehouse_3"
+  address: "Zarqa"
+
+warehouse4:
+  id: 4
+  name: "Warehouse_4"
+  address: "Madaba"

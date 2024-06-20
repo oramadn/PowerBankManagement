@@ -2,7 +2,7 @@ require "test_helper"
 
 class Users::LocationsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @users_location = users_locations(:one)
+    @users_location = users_locations(:user1)
   end
 
   test "should get index" do
