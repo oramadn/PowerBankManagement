@@ -5,19 +5,24 @@
 <p><strong>Location:</strong> <%= @station.location&.name %></p>
 
 <h2>Available Power Banks</h2>
-<% available_power_banks = @station.power_banks.select { |pb| pb.status == 'available' } %>
+<% available_power_banks = @station.power_banks.select { |pb| pb.status == 'available' || pb.status == 'reserved' }.sort_by(&:id) %>
 <% if available_power_banks.any? %>
   <ul>
     <% available_power_banks.each do |power_bank| %>
-      <% if power_bank.status == 'available' %>
-        <li>
-          Power Bank <%= power_bank.id %>
+      <li>
+        Power Bank <%= power_bank.id %> - Status: <%= power_bank.status %>
+        <% if power_bank.status == 'available' %>
           <%= form_with(model: power_bank, url: reserve_users_power_bank_path(power_bank), method: :patch) do |f| %>
             <%= f.hidden_field :status, value: 'reserved' %>
             <%= f.submit "Reserve", class: "btn btn-primary" %>
           <% end %>
-        </li>
-      <% end %>
+        <% elsif power_bank.status == 'reserved' %>
+          <%= form_with(model: power_bank, url: unreserve_users_power_bank_path(power_bank), method: :patch) do |f| %>
+            <%= f.hidden_field :status, value: 'available' %>
+            <%= f.submit "Unreserve", class: "btn btn-warning" %>
+          <% end %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 <% else %>

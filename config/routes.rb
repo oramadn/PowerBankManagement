@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :stations, only: [:index, :show]
     resources :power_banks, only: [] do
       patch 'reserve', on: :member
+      patch 'unreserve', on: :member
     end
   end
 
