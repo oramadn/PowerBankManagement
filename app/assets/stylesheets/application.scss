@@ -23,15 +23,24 @@
     align-items: center; /* Center horizontally */
   }
 
-  .btn-sign-in {
+  .btn-home-sign-in {
     width: 200px;
     color: #7fbc42;
+    background-color: white;
     border-color: #7fbc42;
   }
   
-  .btn-sign-up {
+  .btn-home-sign-up {
     width: 200px;
     color: #ffffff; 
+    background-color: #7fbc42;
+    border-color: #7fbc42;
+  }
+
+  .btn-sign-up,
+  .btn-sign-in {
+    width: 200px;
+    color: white;
     background-color: #7fbc42;
     border-color: #7fbc42;
   }
@@ -43,6 +52,8 @@
   }
 
   /* Hover state */
+  .btn-home-sign-in:hover,
+.btn-home-sign-up:hover,
 .btn-sign-in:hover,
 .btn-sign-up:hover,
 .btn-sign-out:hover {
@@ -51,6 +62,8 @@
 }
 
 /* Active state */
+.btn-home-sign-in:active,
+.btn-home-sign-up:active,
 .btn-sign-in:active,
 .btn-sign-up:active,
 .btn-sign-out:active {
