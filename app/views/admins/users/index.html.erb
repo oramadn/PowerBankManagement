@@ -1,24 +1,29 @@
-<h1>Users</h1>
-<%= link_to 'New User', new_admins_user_path %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class="container">
+  <h1 class="mb-4">Users</h1>
+  
+  <%= link_to 'New User', new_admins_user_path, class: "btn btn-primary mb-3" %>
+
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td>
-          <%= link_to 'Show', admins_user_path(user) %>
-          <%= link_to 'Delete', admins_user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
-        </td>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to "Back to Admin Dashboard", admins_page_path, class: "btn btn-secondary" %>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td>
+            <%= link_to 'Show', admins_user_path(user), class: "btn btn-info btn-sm me-2" %>
+            <%= link_to 'Delete', admins_user_path(user), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm", title: "Delete User" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "Back to Admin Dashboard", admins_page_path, class: "btn btn-secondary" %>
+</div>
