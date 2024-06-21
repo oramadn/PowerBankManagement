@@ -1,25 +1,27 @@
-<h1><%= @station.id %></h1>
+<div class="container">
+  <h1><strong>Station </strong><%= @station.id %></h1>
 
-<p><strong>Location:</strong> <%= @station.location&.name %></p>
-<p><strong>Warehouse:</strong> <%= @station.warehouse&.name %></p>
+  <p><strong>Location:</strong> <%= @station.location&.name %></p>
+  <p><strong>Warehouse:</strong> <%= @station.warehouse&.name %></p>
 
-<% if @station.power_banks.any? %>
-  <h2>Assigned Power Banks:</h2>
-  <ul>
-    <% @station.power_banks.each do |power_bank| %>
-      <li>
-        <%= "#{power_bank.id} - Charge: #{power_bank.charge}, Status: #{power_bank.status}" %>
-        <% if power_bank.user %>
-          (Assigned to: <%= power_bank.user.email %>)
-        <% else %>
-          (Unassigned)
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No power banks in station.</p>
-<% end %>
+  <% if @station.power_banks.any? %>
+    <h2>Assigned Power Banks:</h2>
+    <ul>
+      <% @station.power_banks.each do |power_bank| %>
+        <li>
+          <%= "#{power_bank.id} - Charge: #{power_bank.charge}, Status: #{power_bank.status}" %>
+          <% if power_bank.user %>
+            (Assigned to: <%= power_bank.user.email %>)
+          <% else %>
+            (Unassigned)
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No power banks in station.</p>
+  <% end %>
 
-<%= link_to 'Edit', edit_admins_station_path(@station), class: 'btn btn-warning' %>
-<%= link_to 'Back', admins_stations_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Edit', edit_admins_station_path(@station), class: 'btn btn-warning' %>
+  <%= link_to 'Back', admins_stations_path, class: 'btn btn-secondary' %>
+</div>

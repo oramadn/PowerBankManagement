@@ -1,42 +1,54 @@
-<%= form_with(model: [:admins, @station], local: true) do |form| %>
-  <% if @station.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@station.errors.count, "error") %> prohibited this station from being saved:</h2>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-2">
+      <div class="card p-4 mt-5">
+        <%= form_with(model: [:admins, @station], local: true) do |form| %>
+          <% if @station.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@station.errors.count, "error") %> prohibited this station from being saved:</h2>
+              <ul>
+                <% @station.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-      <ul>
-        <% @station.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <h2 class="text-center mb-4">Add Station</h2>
+
+          <div class="form-group mb-3">
+            <%= form.label :location_id, class: "form-label" %>
+            <%= form.collection_select :location_id, @locations, :id, :name, {}, class: "form-control" %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= form.label :warehouse_id, class: "form-label" %>
+            <%= form.collection_select :warehouse_id, @warehouses, :id, :name, {}, class: "form-control" %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= form.label :status, class: "form-label" %>
+            <%= form.select :status, options_for_select([['Online', 'online'], ['Offline', 'offline']], @station.status), {}, class: 'form-control' %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= form.label :power_banks, 'Select Power Banks', class: "form-label" %><br>
+            <% @power_banks.order(id: :asc).each do |power_bank| %>
+              <div class="form-check">
+                <%= check_box_tag 'station[power_bank_ids][]', power_bank.id, @station.power_banks.include?(power_bank), class: 'form-check-input' %>
+                <%= form.label "station[power_bank_ids][]", "Power Bank #{power_bank.id}", class: 'form-check-label' %>
+              </div>
+            <% end %>
+          </div>    
+
+          <div class="actions text-center">
+            <%= form.submit 'Save', class: 'btn btn-primary btn-sm btn-block btn-authenticate' %>
+          </div>
+          <div class="text-center mt-3">
+            <%= link_to 'Back', admins_stations_path, class: 'btn btn-secondary', style: 'width: 100px; padding:8px;' %>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :location_id %>
-    <%= form.collection_select :location_id, @locations, :id, :name %>
   </div>
-
-  <div class="field">
-    <%= form.label :warehouse_id %>
-    <%= form.collection_select :warehouse_id, @warehouses, :id, :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, options_for_select([['Online', 'online'], ['Offline', 'offline']], @station.status), {}, class: 'form-control' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :power_banks, 'Select Power Banks' %><br>
-    <% @power_banks.each do |power_bank| %>
-      <label>
-        <%= check_box_tag 'station[power_bank_ids][]', power_bank.id, @station.power_banks.include?(power_bank) %>
-        <%= "Power Bank #{power_bank.id}" %>
-      </label><br>
-    <% end %>
-  </div>    
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
