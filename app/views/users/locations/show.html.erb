@@ -1,6 +1,24 @@
-<h1><%= @location.name %></h1>
+<!DOCTYPE html>
+<html>
 
-<p><strong>Latitude:</strong> <%= @location.lat %></p>
-<p><strong>Longitude:</strong> <%= @location.lng %></p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @location.name %></title>
+  <%= stylesheet_link_tag "application", "data-turbo-track" => "reload" %> <!-- Link to your application.css -->
+</head>
 
-<%= link_to 'Back', users_locations_path, class: 'btn btn-secondary' %>
+<body>
+
+  <div class="container">
+    <h1 class="mt-5"><%= @location.name %></h1>
+
+    <p><strong>Latitude:</strong> <%= @location.lat %></p>
+    <p><strong>Longitude:</strong> <%= @location.lng %></p>
+
+    <%= link_to 'Back', users_locations_path, class: 'btn btn-secondary mt-3' %>
+  </div>
+
+</body>
+
+</html>

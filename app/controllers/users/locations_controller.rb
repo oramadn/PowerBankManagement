@@ -1,4 +1,5 @@
 class Users::LocationsController < ApplicationController
+  layout 'user'
   before_action :authenticate_user!
   before_action :set_location, only: [:show]
 
