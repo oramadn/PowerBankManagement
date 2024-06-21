@@ -1,0 +1,73 @@
+/* user_home.css */
+
+body {
+    background-color: #f8f9fa; /* Light gray background */
+    padding-top: 40px; /* Padding on top for spacing */
+  }
+  
+  .card {
+    width: 300px; /* Full width of the parent container */
+    margin: 20px auto; /* Center align cards horizontally */
+    padding: 20px; /* Padding inside cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded corners */
+    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+    display: flex; /* Use flexbox for the card contents */
+    flex-direction: column; /* Arrange contents vertically */
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+  }
+  
+  .card-title {
+    font-size: 24px; /* Title font size */
+    margin-bottom: 20px; /* Space below title */
+    text-align: center; /* Center align title */
+  }
+  
+  .card-text {
+    text-align: center; /* Center align card text */
+  }
+  
+  .card-link {
+    display: block; /* Block level links for full card click area */
+    padding: 10px 20px; /* Padding inside links */
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Center align text */
+    text-decoration: none; /* No underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .card-link:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+
+.dashboard-button {
+    color: #ffffff; 
+    background-color: #7fbc42;
+    border-color: #7fbc42;
+    }
+
+.dashboard-button:hover{
+    background-color: #6c9e3f; /* Darker shade for hover */
+    border-color: #6c9e3f; /* Darker shade for hover */
+    }
+
+.dashboard-button:active {
+    background-color: #5e9037;
+    border-color: #5e9037; 
+    }
+
+  .dashboard-title {
+    text-align: center; /* Center align the title */
+    font-size: 36px; /* Larger font size for the title */
+    margin-bottom: 40px; /* Space below the title */
+    color: #333; /* Dark text color */
+    }
+
+  
