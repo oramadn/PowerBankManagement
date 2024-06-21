@@ -1,21 +1,47 @@
-<h1>Homepage</h1>
+<!-- app/views/pages/home.html.erb -->
 
-<% if user_signed_in? %>
-<ul>
-    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
-</ul>
-<% elsif !admin_signed_in? %>
-<h3>User</h3>
-    <%= link_to "Sign up", new_user_registration_path %>
-    <%= link_to "Sign in", new_user_session_path %>
-<% end %>
-
-<% if admin_signed_in? %>
-<ul>
-    <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: { turbo_method: :delete } %></li>
-</ul>
-<% elsif !user_signed_in? %>
-<h3>Admin</h3>
-    <%= link_to "Sign up", new_admin_registration_path %>
-    <%= link_to "Sign in", new_admin_session_path %>
-<% end %>
+<div class="full-height-container d-flex align-items-center">
+    <div class="container">
+      <!-- Top section with logo -->
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <%= image_tag("logo.png", alt: "Logo", class: "img-fluid mt-10 mb-5", style: "margin-left: 10px;") %>
+        </div>
+      </div>
+    
+      <!-- Bottom section with user and admin sign-in/sign-up -->
+      <div class="row justify-content-center">
+        <div class="col-md-3">
+          <div class="card text-center mb-3 border-0">
+            <div class="card-body">
+              <% if user_signed_in? %>
+                <h3>Welcome, User!</h3>
+                <ul class="list-inline">
+                  <li class="list-inline-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-primary" %></li>
+                </ul>
+              <% else %>
+                <%= link_to "Sign in as User", new_user_session_path, class: "btn btn-outline-primary btn-lg btn-block mb-3 btn-sign-in" %>
+                <%= link_to "Sign up as User", new_user_registration_path, class: "btn btn-primary btn-lg btn-block btn-sign-up" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center mb-3 border-0">
+            <div class="card-body">
+              <% if admin_signed_in? %>
+                <h3>Welcome, Admin!</h3>
+                <ul class="list-inline">
+                  <li class="list-inline-item"><%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-primary" %></li>
+                </ul>
+              <% else %>
+                <%= link_to "Sign in as Admin", new_admin_session_path, class: "btn btn-outline-primary btn-lg btn-block mb-3 btn-sign-in" %>
+                <%= link_to "Sign up as Admin", new_admin_registration_path, class: "btn btn-primary btn-lg btn-block btn-sign-up" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
