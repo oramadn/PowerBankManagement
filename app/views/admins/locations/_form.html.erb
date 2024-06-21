@@ -1,31 +1,45 @@
-<%= form_with(model: location, url: location.persisted? ? admins_location_path(location) : admins_locations_path, method: location.persisted? ? :patch : :post) do |form| %>
-  <% if location.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
-      <ul>
-        <% location.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-2">
+      <div class="card p-4 mt-5">
+        <%= form_with(model: location, url: location.persisted? ? admins_location_path(location) : admins_locations_path, method: location.persisted? ? :patch : :post) do |form| %>
+          <% if location.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+              <ul>
+                <% location.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <h2 class="text-center mb-4">Add Location</h2>
+
+          <div class="form-group mb-3">
+            <%= form.label :name, class: "form-label" %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= form.label "Latitude", class: "form-label" %>
+            <%= form.text_field :lat, class: 'form-control' %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= form.label "Longitude", class: "form-label" %>
+            <%= form.text_field :lng, class: 'form-control' %>
+          </div>
+
+          <div class="actions text-center">
+            <%= form.submit 'Save', class: 'btn btn-primary btn-sm btn-block btn-authenticate' %>
+          </div>
+
+          <div class="text-center mt-3">
+            <%= link_to 'Back', admins_locations_path, class: 'btn btn-secondary', style: 'width: 100px; padding: 8px;' %>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control' %>
   </div>
-
-  <div class="form-group">
-    <%= form.label :lat %>
-    <%= form.text_field :lat, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :lng %>
-    <%= form.text_field :lng, class: 'form-control' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Save', class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>

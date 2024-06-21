@@ -1,28 +1,32 @@
-<h1>Locations</h1>
+<div class="container">
+  <h1 class="mb-4">Locations</h1>
 
-<p><%= link_to "New Location", new_admins_location_path, class: "btn btn-primary" %></p>
+  <%= link_to "New Location", new_admins_location_path, class: "btn btn-primary" %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th colspan="2">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= location.name %></td>
-        <td><%= location.lat %></td>
-        <td><%= location.lng %></td>
-        <td><%= link_to "Show", admins_location_path(location), class: "btn btn-info" %></td>
-        <td><%= link_to "Edit", edit_admins_location_path(location), class: "btn btn-warning" %></td>
-        <td><%= link_to "Delete", admins_location_path(location), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to "Back to Admin Dashboard", admins_page_path, class: "btn btn-secondary" %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th colspan="2">Actions</th> <!-- Colspan for Actions column -->
+        </tr>
+      </thead>
+      <tbody>
+        <% @locations.each do |location| %>
+          <tr>
+            <td><%= location.name %></td>
+            <td><%= location.lat %></td>
+            <td><%= location.lng %></td>
+            <td><%= link_to "Show", admins_location_path(location), class: "btn btn-info" %>
+                <%= link_to "Edit", edit_admins_location_path(location), class: "btn btn-warning" %>
+                <%= link_to "Delete", admins_location_path(location), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
+  <%= link_to "Back to Admin Dashboard", admins_page_path, class: "btn btn-secondary" %>
+</div>
