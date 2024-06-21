@@ -1,4 +1,5 @@
 class Admins::WarehousesController < ApplicationController
+  layout 'admin'
   before_action :authenticate_admin!
   before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
 

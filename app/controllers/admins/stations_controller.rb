@@ -1,4 +1,5 @@
 class Admins::StationsController < ApplicationController
+  layout 'admin'
   before_action :authenticate_admin!
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 

@@ -1,4 +1,5 @@
 class Admins::PowerBanksController < ApplicationController
+  layout 'admin'
   before_action :authenticate_admin!
   before_action :set_power_bank, only: [:show, :edit, :update, :destroy]
 
