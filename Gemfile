@@ -71,3 +71,6 @@ gem "devise", "~> 4.9"
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'net-pop'
+gem 'bootstrap', '~> 5.3.3'
+gem 'dartsass-sprockets'
+gem 'jquery-rails'
