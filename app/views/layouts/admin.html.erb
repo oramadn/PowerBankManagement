@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header class="d-flex justify-content-between align-items-center py-3">
+    <header class="d-flex justify-content-between align-items-center py-1">
         <div>
           <!-- Left-aligned logo -->
         </div>
@@ -33,11 +33,11 @@
 
     <footer class="fixed-bottom py-4">
         <div class="container d-flex justify-content-between align-items-center">
-          <div>
+          <div style="margin-left: 58px;">
             <%= link_to 'Edit Profile', edit_admin_registration_path, class: "btn btn-primary btn-authenticate" %>
             <%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-primary btn-sign-out" %>
           </div>
-          <div class="text-right">
+          <div class="text-right" style="margin-right: 58px;">
             <%= image_tag("logo.png", alt: "Logo", class: "img-fluid", style: "max-width: 150px; height: auto;") %>
           </div>
         </div>
