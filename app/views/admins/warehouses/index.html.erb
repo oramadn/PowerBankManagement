@@ -1,12 +1,13 @@
 <div class="container">
-  <h1 class="mb-4">Warehouses</h1>
+  <h1 class="mb-4" style="text-align: center;">Warehouses</h1>
 
   <%= link_to "New Warehouse", new_admins_warehouse_path, class: "btn btn-primary" %>
 
-  <div class="table-responsive">
+  <div class="table-responsive" style="text-align: center;">
     <table class="table table-striped">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Address</th>
           <th>Actions</th>
@@ -15,6 +16,7 @@
       <tbody>
         <% @warehouses.order(id: :asc).each do |warehouse| %>
           <tr>
+            <td><%= warehouse.id %></td>
             <td><%= warehouse.name %></td>
             <td><%= warehouse.address %></td>
             <td>
