@@ -1,8 +1,55 @@
-<h1>Pages#admins</h1>
-<h3>Admin Dashboard</h3>
-<li><%= link_to "Manage Users", admins_users_path %></li>
-<li><%= link_to "Manage Warehouses", admins_warehouses_path %></li>
-<li><%= link_to "Manage Locations", admins_locations_path %></li>
-<li><%= link_to "Manage Stations", admins_stations_path %></li>
-<li><%= link_to "Manage Power Banks", admins_power_banks_path %></li>
-<li><%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: { turbo_method: :delete } %></li>
+<div class="container">
+    <h1 class="text-center mt-5 mb-4">Admin Dashboard</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Manage Users</h5>
+                    <p class="card-text">View and manage user accounts.</p>
+                    <%= link_to admins_users_path, class: "btn btn-primary d-block mx-auto" ,style: "width: 180px;" do %>Manage Users<% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Manage Warehouses</h5>
+                    <p class="card-text">Manage warehouses and their details.</p>
+                    <%= link_to admins_warehouses_path, class: "btn btn-primary d-block mx-auto" ,style: "width: 180px;" do %>Manage Warehouses<% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Manage Locations</h5>
+                    <p class="card-text">View and update location information.</p>
+                    <%= link_to admins_locations_path, class: "btn btn-primary d-block mx-auto", style: "width: 180px;" do %>Manage Locations<% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Manage Stations</h5>
+                    <p class="card-text">Manage charging stations.</p>
+                    <%= link_to admins_stations_path, class: "btn btn-primary d-block mx-auto", style: "width: 180px;" do %>Manage Stations<% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Manage Power Banks</h5>
+                    <p class="card-text">Manage power bank inventory.</p>
+                    <%= link_to admins_power_banks_path, class: "btn btn-primary d-block mx-auto", style: "width: 180px;" do %>Manage Power Banks<% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

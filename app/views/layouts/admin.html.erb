@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+    <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+
+            <%= stylesheet_link_tag "application" , "data-turbo-track"=> "reload" %>
+                <%= javascript_importmap_tags %>
+</head>
+
+<body>
+    <header class="d-flex justify-content-end">
+        <%= link_to admins_page_path do %>
+          <%= image_tag("home_icon.png", alt: "Home Button", class: "img-fluid") %>
+        <% end %>
+    </header>
+    <!-- Main Content Area for Admin Views -->
+    <main>
+        <%= yield %>
+    </main>
+
+    <footer class="d-flex justify-content-center mt-5">
+        <nav>
+            <ul class="list-unstyled d-flex">
+                <li class="me-3">
+                    <%= link_to 'Edit Profile', edit_admin_registration_path , class: "btn btn-primary btn-authenticate"%>
+                </li>
+                <li>
+                    <%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: { turbo_method: :delete } , class: "btn btn-primary btn-sign-out" %>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+</html>
