@@ -1,5 +1,3 @@
-![image](https://github.com/oramadn/PowerBankManagementAPI/assets/111233764/e56db463-2aa9-41d3-a93a-c5e4367adea7)# README
-
 ## Power Bank Management API
 A Rails-based API for managing power banks, allowing administrators to oversee locations, users, and stations, warehouses and power banks. And allow users to reserve power banks on the go!
 
