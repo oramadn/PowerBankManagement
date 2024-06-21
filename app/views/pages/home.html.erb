@@ -20,8 +20,8 @@
                   <li class="list-inline-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-primary" %></li>
                 </ul>
               <% else %>
-                <%= link_to "Sign in as User", new_user_session_path, class: "btn btn-outline-primary btn-lg btn-block mb-3 btn-sign-in" %>
-                <%= link_to "Sign up as User", new_user_registration_path, class: "btn btn-primary btn-lg btn-block btn-sign-up" %>
+                <%= link_to "Sign in as User", new_user_session_path, class: "btn btn-outline-primary btn-lg btn-block mb-3 btn-home-sign-in" %>
+                <%= link_to "Sign up as User", new_user_registration_path, class: "btn btn-primary btn-lg btn-block btn-home-sign-up" %>
               <% end %>
             </div>
           </div>
@@ -35,8 +35,8 @@
                   <li class="list-inline-item"><%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-primary" %></li>
                 </ul>
               <% else %>
-                <%= link_to "Sign in as Admin", new_admin_session_path, class: "btn btn-outline-primary btn-lg btn-block mb-3 btn-sign-in" %>
-                <%= link_to "Sign up as Admin", new_admin_registration_path, class: "btn btn-primary btn-lg btn-block btn-sign-up" %>
+                <%= link_to "Sign in as Admin", new_admin_session_path, class: "btn btn-outline-primary btn-lg btn-block mb-3 btn-home-sign-in" %>
+                <%= link_to "Sign up as Admin", new_admin_registration_path, class: "btn btn-primary btn-lg btn-block btn-home-sign-up" %>
               <% end %>
             </div>
           </div>
