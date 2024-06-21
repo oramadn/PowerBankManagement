@@ -1,32 +1,60 @@
-<h1>Station Details</h1>
+<!DOCTYPE html>
+<html>
 
-<p><strong>ID:</strong> <%= @station.id %></p>
-<p><strong>Status:</strong> <%= @station.status %></p>
-<p><strong>Location:</strong> <%= @station.location&.name %></p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Station Details</title>
+  <%= stylesheet_link_tag "application", "data-turbo-track" => "reload" %> <!-- Link to your application.css -->
+</head>
 
-<h2>Available Power Banks</h2>
-<% available_power_banks = @station.power_banks.select { |pb| pb.status == 'available' || pb.status == 'reserved' }.sort_by(&:id) %>
-<% if available_power_banks.any? %>
-  <ul>
-    <% available_power_banks.each do |power_bank| %>
-      <li>
-        Power Bank <%= power_bank.id %> - Status: <%= power_bank.status %>
-        <% if power_bank.status == 'available' %>
-          <%= form_with(model: power_bank, url: reserve_users_power_bank_path(power_bank), method: :patch) do |f| %>
-            <%= f.hidden_field :status, value: 'reserved' %>
-            <%= f.submit "Reserve", class: "btn btn-primary" %>
-          <% end %>
-        <% elsif power_bank.status == 'reserved' %>
-          <%= form_with(model: power_bank, url: unreserve_users_power_bank_path(power_bank), method: :patch) do |f| %>
-            <%= f.hidden_field :status, value: 'available' %>
-            <%= f.submit "Unreserve", class: "btn btn-warning" %>
-          <% end %>
+<body>
+
+  <div class="container">
+    <h1 class="mt-5 mb-4" style="text-align: center;">Station Details</h1>
+
+    <div class="row" style="text-align: center;">
+      <div class="col-md-6">
+        <h2>Station Information</h2>
+        <p><strong>ID:</strong> <%= @station.id %></p>
+        <p><strong>Status:</strong> <%= @station.status %></p>
+        <p><strong>Location:</strong> <%= @station.location&.name %></p>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Available Power Banks</h2>
+        <% if @station.power_banks.any? %>
+          <ul class="list-unstyled">
+            <% @station.power_banks.order(id: :asc).each do |power_bank| %>
+              <% if power_bank.status == 'available' || power_bank.status == 'reserved' %>
+                <li>
+                  Power Bank <%= power_bank.id %> - Status: <%= power_bank.status %>
+                  <% if power_bank.status == 'available' %>
+                    <%= form_with(model: power_bank, url: reserve_users_power_bank_path(power_bank), method: :patch, local: true) do |f| %>
+                      <%= f.hidden_field :status, value: 'reserved' %>
+                      <%= f.submit "Reserve", class: "btn btn-primary btn-sm" %>
+                    <% end %>
+                  <% elsif power_bank.status == 'reserved' %>
+                    <%= form_with(model: power_bank, url: unreserve_users_power_bank_path(power_bank), method: :patch, local: true) do |f| %>
+                      <%= f.hidden_field :status, value: 'available' %>
+                      <%= f.submit "Unreserve", class: "btn btn-warning btn-sm" %>
+                    <% end %>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No power banks are currently available</p>
         <% end %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No power banks are currently available</p>
-<% end %>
+      </div>
+    </div>
 
-<%= link_to 'Back', users_stations_path, class: 'btn btn-secondary' %>
+    <div class="mt-4" style="text-align: center;">
+      <%= link_to 'Back', users_stations_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+
+</body>
+
+</html>

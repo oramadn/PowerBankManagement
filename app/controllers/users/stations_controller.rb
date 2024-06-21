@@ -1,4 +1,5 @@
 class Users::StationsController < ApplicationController
+    layout 'user'
     before_action :authenticate_user!
     before_action :set_station, only: [:show]
 

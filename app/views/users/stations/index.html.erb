@@ -1,21 +1,40 @@
-<h1>Stations</h1>
+<!DOCTYPE html>
+<html>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Status</th>
-      <th colspan="2">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @stations.each do |station| %>
-      <tr>
-        <td><%= station.location&.name %></td>
-        <td><%= station.status %></td>
-        <td><%= link_to "Show available power banks", users_station_path(station), class: "btn btn-info" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to "Back to User Dashboard", users_page_path, class: "btn btn-secondary" %>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stations</title>
+  <%= stylesheet_link_tag "application", "data-turbo-track" => "reload" %> <!-- Link to your application.css -->
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="mt-5" style="text-align: center;">Stations</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="text-center">Location</th>
+          <th class="text-center">Status</th>
+          <th class="text-center" colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stations.each do |station| %>
+          <tr>
+            <td class="align-middle text-center"><%= station.location&.name %></td>
+            <td class="align-middle text-center"><%= station.status %></td>
+            <td class="align-middle text-center"><%= link_to "Show available power banks", users_station_path(station), class: "btn btn-info" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to "Back to User Dashboard", users_page_path, class: "btn btn-secondary mt-3" %>
+  </div>
+
+</body>
+
+</html>
