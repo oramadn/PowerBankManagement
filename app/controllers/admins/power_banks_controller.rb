@@ -2,9 +2,10 @@ class Admins::PowerBanksController < ApplicationController
   layout 'admin'
   before_action :authenticate_admin!
   before_action :set_power_bank, only: [:show, :edit, :update, :destroy]
+  include Pagy::Backend
 
   def index
-    @power_banks = PowerBank.all
+    @pagy, @power_banks = pagy(PowerBank.all, items: 10)
   end
 
   def show
