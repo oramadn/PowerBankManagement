@@ -74,3 +74,5 @@ gem 'net-pop'
 gem 'bootstrap', '~> 5.3.3'
 gem 'dartsass-sprockets'
 gem 'jquery-rails'
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
