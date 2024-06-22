@@ -76,3 +76,5 @@ gem 'dartsass-sprockets'
 gem 'jquery-rails'
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem 'pagy', '~> 8.4'
